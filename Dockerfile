@@ -15,7 +15,7 @@ RUN apt-get -y install software-properties-common &&\
     apt-get -y update &&\
     apt-get -y install ansible
 
-RUN ansible-galaxy install mtangaro.postgresql
+RUN ansible-galaxy install mtangaro.ansible-role-postgresql
 
 RUN echo "localhost" > /etc/ansible/hosts
 
