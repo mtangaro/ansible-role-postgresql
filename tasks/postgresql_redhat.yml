@@ -12,8 +12,14 @@
     name: 'postgresql{{ postgresql_version_terse }}-server'
     state: present
 
+- name: '[EL] Ensure pgdata directory not exists'
+  stat: path={{ postgresql_pgdata }}/base
+  register: pgdata_stat
+  failed_when: false
+
 - name: '[EL] PostgreSQL initdb creates a new database cluster'
   shell: "/usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version_terse }}-setup initdb"
+  when: pgdata_stat.stat.isdir is not defined or not pgdata_stat.stat.isdir
 
 - name: '[EL] Edit pg_hba.conf IPv4 local connections'
   replace:
