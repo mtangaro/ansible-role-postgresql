@@ -1,0 +1,15 @@
+---
+- name: '[Ubuntu] Include vars'
+  include_vars: postgresql_ubuntu.yml
+
+- name: '[Ubuntu] Install pgdg package signing key'
+  apt_key: keyserver=pgp.mit.edu id=ACCC4CF8
+  
+- name: '[Ubuntu] Install repository'
+  apt_repository:
+    repo: 'deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main'
+    update_cache: yes
+
+- name: '[Ubuntu] Install postgresql {{ postgresql_version }}'
+  apt:
+    name: "postgresql{{ '-' ~ postgresql_version if postgresql_version is defined else '' }}"
