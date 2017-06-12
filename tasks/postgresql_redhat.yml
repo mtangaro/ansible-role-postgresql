@@ -1,8 +1,5 @@
 ---
-- name: '[EL] Copy files/get_repo_rpm_release.py'
-  copy:
-    src: 'get_repo_rpm_release.py'
-    dest: '/usr/local/bin'
-    remote_src: yes
-    mode: a+x
 
+- name: '[EL] Install repository'
+    yum: '{{ postgresql_yum_repository_url }}'
+    state: present
