@@ -8,17 +8,17 @@ MAINTAINER ma.tangaro@gmail.com
 
 ENV container docker
 
-COPY ["playbook.yaml","/"]
+COPY ["playbook.yml","/"]
 
 RUN apt-get -y install software-properties-common &&\
     apt-add-repository -y ppa:ansible/ansible &&\
     apt-get -y update &&\
     apt-get -y install ansible
 
-RUN ansible-galaxy install mtangaro.ansible-role-postgresql
+RUN ansible-galaxy install mtangaro.postgresql
 
 RUN echo "localhost" > /etc/ansible/hosts
 
-RUN ansible-playbook /playbook.yaml
+RUN ansible-playbook /playbook.yml
 
 EXPOSE 21 22 80
