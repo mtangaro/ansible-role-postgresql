@@ -18,7 +18,9 @@
   failed_when: false
 
 - name: '[EL] PostgreSQL initdb creates a new database cluster'
-  shell: "/usr/pgsql-{{ postgresql_version }}/bin/postgresql{{ postgresql_version_terse }}-setup initdb"
+  shell: "/usr/pgsql-{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} initb"
+  become: yes
+  become_user: postgres
   when: pgdata_stat.stat.isdir is not defined or not pgdata_stat.stat.isdir
 
 - name: '[EL] Edit pg_hba.conf IPv4 local connections'
@@ -35,6 +37,6 @@
 
 - name: '[EL] Start PostgreSQL server'
   shell: '/usr/pgsql-{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} -w start'
-  become: True
+  become: yes
   become_user: postgres
 
