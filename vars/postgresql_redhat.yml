@@ -1,0 +1,4 @@
+---
+pgsql_pgdata: '/var/lib/pgsql/{{ pgsql_version }}/data'
+pgsql_conf_dir: '/var/lib/pgsql/{{ pgsql_version }}/data'
+pgsql_pgport: '{{ galaxy_db_port }}'
