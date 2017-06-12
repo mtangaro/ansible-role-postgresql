@@ -1,4 +1,7 @@
 ---
 # defaults file for ansible-role-postgresql
 
-pgsql_version: 9.4
+pgsql_version: 9.6
+
+#______________________________________
+# yum configuration
