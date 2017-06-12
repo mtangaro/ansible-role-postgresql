@@ -1,6 +1,8 @@
 ---
-- name: Copy files/get_repo_rpm_release.py
+- name: '[EL] Copy files/get_repo_rpm_release.py'
   copy:
-    src: get_repo_rpm_release.py
+    src: 'get_repo_rpm_release.py'
     dest: '/usr/local/bin'
     remote_src: yes
+    mode: a+x
+
