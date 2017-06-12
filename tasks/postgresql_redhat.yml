@@ -1,10 +1,15 @@
 ---
+- name: '[EL] Include vars'
+  include_vars: postgresql_redhat.yml
+
 - name: '[EL] Install repository'
-    yum: '{{ postgresql_yum_repository_url }}'
+  yum:
+    name: '{{ postgresql_yum_repository_url }}'
     state: present
 
 - name: '[EL] Install postgresql {{ postgresql_version }}'
-    yum: 'postgresql{{ postgresql_version_terse }}-server'
+  yum:
+    name: 'postgresql{{ postgresql_version_terse }}-server'
     state: present
 
 - name: '[EL] PostgreSQL initdb creates a new database cluster'
