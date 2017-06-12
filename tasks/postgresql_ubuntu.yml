@@ -15,7 +15,7 @@
     name: "postgresql{{ '-' ~ postgresql_version if postgresql_version is defined else '' }}"
 
 - name: '[Ubuntu] PostgreSQL initdb creates a new database cluster'
-  shell: "/usr/pgsql-{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} initdb"
+  shell: "/usr/lib/postgresql/{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} initdb"
 #  become: yes
 #  become_user: postgres
 
