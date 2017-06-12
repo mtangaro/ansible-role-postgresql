@@ -14,12 +14,12 @@
   apt:
     name: "postgresql{{ '-' ~ postgresql_version if postgresql_version is defined else '' }}"
 
-- name: '[Ubuntu] PostgreSQL initdb creates a new database cluster'
-  shell: "/usr/lib/postgresql/{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} initdb"
-  become: yes
-  become_user: postgres
-
-- name: '[Ubuntu] Start PostgreSQL server'
-  shell: '/usr/lib/postgresql/{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} -w start'
-  become: yes
-  become_user: postgres
+#- name: '[Ubuntu] PostgreSQL initdb creates a new database cluster'
+#  shell: "/usr/lib/postgresql/{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} initdb"
+#  become: yes
+#  become_user: postgres
+##
+#- name: '[Ubuntu] Start PostgreSQL server'
+#  shell: '/usr/lib/postgresql/{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} -w start'
+#  become: yes
+#  become_user: postgres
