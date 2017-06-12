@@ -1,5 +1,4 @@
 ---
-
 - name: '[EL] Install repository'
     yum: '{{ postgresql_yum_repository_url }}'
     state: present
