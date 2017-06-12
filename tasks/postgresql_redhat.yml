@@ -32,3 +32,9 @@
     dest: '{{ postgresql_pgdata }}/pg_hba.conf'
     regexp: 'host    all             all             ::1/128                 ident'
     replace: 'host    all             all             ::1/128                 md5'
+
+- name: '[EL] Start PostgreSQL server'
+  shell: '/usr/pgsql-{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} -w start'
+  become: True
+  become_user: postgres
+

@@ -7,4 +7,6 @@ postgresql_yum_repository_url: "{{ postgresql_yum_repository_base_url }}/{{ post
 
 postgresql_pgdata: '/var/lib/pgsql/{{ postgresql_version }}/data'
 postgresql_conf_dir: '/var/lib/pgsql/{{ postgresql_version }}/data'
+postgresql_service_name: 'postgresql-{{ postgresql_version }}'
+
 postgresql_pgport: '{{ galaxy_db_port }}'
