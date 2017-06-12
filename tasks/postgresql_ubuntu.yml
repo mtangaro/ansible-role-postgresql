@@ -14,12 +14,6 @@
   apt:
     name: "postgresql{{ '-' ~ postgresql_version if postgresql_version is defined else '' }}"
 
-- name: '[Ubuntu] Ensure pgdata directory not exists'
-  stat:
-    path: '{{ postgresql_pgdata }}/base'
-  register: pgdata_stat
-  failed_when: false
-
 - name: '[Ubuntu] PostgreSQL initdb creates a new database cluster'
   shell: "/usr/lib/postgresql/{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} initdb"
   become: yes
