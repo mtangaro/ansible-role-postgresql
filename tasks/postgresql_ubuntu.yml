@@ -21,7 +21,7 @@
   failed_when: false
 
 - name: '[Ubuntu] PostgreSQL initdb creates a new database cluster'
-  shell: "/usr/lib/postgresql/{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} initb"
+  shell: "/usr/lib/postgresql/{{ postgresql_version }}/bin/pg_ctl -D {{ postgresql_pgdata }} initdb"
   become: yes
   become_user: postgres
 
