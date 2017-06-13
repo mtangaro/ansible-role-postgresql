@@ -1,5 +1,5 @@
-#FROM grycap/travis:centos7
-FROM grycap/travis:ubuntu1604
+FROM grycap/travis:centos7
+#FROM grycap/travis:ubuntu1604
 #FROM centos:7
 #FROM indigodatacloud/centos-sshd:7
 #FROM indigodatacloud/ubuntu-sshd:16.04
@@ -10,10 +10,13 @@ ENV container docker
 
 COPY ["playbook.yml","/"]
 
-RUN apt-get -y install software-properties-common &&\
-    apt-add-repository -y ppa:ansible/ansible &&\
-    apt-get -y update &&\
-    apt-get -y install ansible
+#RUN apt-get -y install software-properties-common &&\
+#    apt-add-repository -y ppa:ansible/ansible &&\
+#    apt-get -y update &&\
+#    apt-get -y install ansible
+
+RUN yum install -y epel-release
+RUN yum install -y ansible
 
 RUN ansible-galaxy install mtangaro.postgresql
 
